@@ -19,73 +19,75 @@ class HobbySquareCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(
-      onPressed: onPressed,
-      padding: EdgeInsets.zero,
-      child: Column(
-        children: [
-          Expanded(
-            child: Container(
-              width: 100,
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: context.colors.primary,
-                ),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: context.colors.primary),
-                          borderRadius: BorderRadius.circular(7),
-                        ),
-                        child: Image.asset(
-                          hobby.category.assetName,
-                          width: 50,
-                          height: 50,
-                        ),
-                      ),
-                      Text(
-                        FormatHelper.formatTime(hobby.time),
-                        style: context.text.displaySmall,
-                      ),
-                    ],
+    return SizedBox(
+      width: 100,
+      child: CupertinoButton(
+        onPressed: onPressed,
+        padding: EdgeInsets.zero,
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: context.colors.primary,
                   ),
-                  Expanded(
-                    child: RotatedBox(
-                      quarterTurns: 1,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          hobby.category.name.capitalize(),
-                          style: context.text.bodySmall,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: context.colors.primary),
+                            borderRadius: BorderRadius.circular(7),
+                          ),
+                          child: Image.asset(
+                            hobby.category.assetName,
+                            width: 50,
+                            height: 50,
+                          ),
+                        ),
+                        Text(
+                          subtitle ?? FormatHelper.formatTime(hobby.time),
+                          style: context.text.displaySmall,
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                      child: RotatedBox(
+                        quarterTurns: 1,
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            hobby.category.name.capitalize(),
+                            style: context.text.bodySmall,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 5),
-          if (subtitle != null)
-            Text(
-              subtitle!,
-              style: context.text.bodySmall,
+            const SizedBox(height: 5),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    hobby.name,
+                    style: context.text.bodySmall,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
             ),
-          const SizedBox(height: 5),
-          Text(
-            hobby.name,
-            style: context.text.bodySmall,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

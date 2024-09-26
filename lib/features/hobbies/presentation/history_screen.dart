@@ -100,7 +100,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                               autoPlay: true,
                               child: HobbySquareCard(
                                 hobby: hobby,
-                                subtitle: FormatHelper.formatDate(
+                                subtitle: FormatHelper.formatDateShort(
                                   completedHobby.date,
                                 ),
                                 onPressed: () async {
@@ -120,7 +120,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                             onPressed: () => context.router.push(
                               OpenHobbyRoute(hobby: hobby),
                             ),
-                            subtitle: FormatHelper.formatDate(
+                            subtitle: FormatHelper.formatDateShort(
                               completedHobby.date,
                             ),
                           );

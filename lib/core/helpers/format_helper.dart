@@ -22,7 +22,7 @@ class FormatHelper {
   }
 
   static String formatDateShort(DateTime date) {
-    return DateFormat('dd MMM').format(date);
+    return DateFormat('dd.MM').format(date);
   }
 
   static String formatDateMonthFull(DateTime date) {

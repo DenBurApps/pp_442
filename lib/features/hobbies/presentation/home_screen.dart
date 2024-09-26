@@ -115,12 +115,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   if (hobbies.isEmpty)
-                    SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: CustomPlaceholder(
-                        text:
-                            'You don\'t have a card.\nLet\'s fix it, add the first note!',
-                        assetName: Assets.images.placeholders.main.path,
+                    SliverPadding(
+                      padding: const EdgeInsets.only(bottom: 40),
+                      sliver: SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: CustomPlaceholder(
+                          text:
+                              'You don\'t have a card.\nLet\'s fix it, add the first note!',
+                          assetName: Assets.images.placeholders.main.path,
+                        ),
                       ),
                     ),
                   if (hobbies.isNotEmpty)
@@ -279,18 +282,17 @@ class _HomeScreenState extends State<HomeScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: SizedBox(
-              height: 120,
+              height: 110,
               child: Stack(
                 children: [
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Stack(
                       children: [
-                        // Background container with a semicircle cut-out
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: ClipPath(
-                            clipper: SemicircleClipper(),
+                            clipper: _SemicircleClipper(),
                             child: Container(
                               height: 75,
                               decoration: BoxDecoration(
@@ -357,12 +359,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ),
-                        // Plus button in the center
                         Align(
                           alignment: Alignment.topCenter,
                           child: SizedBox(
-                            width: 80,
-                            height: 80,
+                            width: 60,
+                            height: 60,
                             child: CupertinoButton(
                               padding: EdgeInsets.zero,
                               borderRadius: BorderRadius.circular(100),
@@ -390,30 +391,25 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class SemicircleClipper extends CustomClipper<Path> {
+class _SemicircleClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    const double cutOutRadius = 40; // Adjust as needed
+    const double cutOutRadius = 40;
 
-    // Start drawing the rounded rectangle
     path.moveTo(0, 0);
-    path.lineTo(0, size.height - 20); // Left side
-    path.quadraticBezierTo(
-        0, size.height, 20, size.height); // Bottom-left curve
-    path.lineTo(size.width / 2 - cutOutRadius, size.height);
-
-    // Draw the semicircle cut-out
+    path.lineTo(size.width / 2 - cutOutRadius, 0);
     path.arcToPoint(
-      Offset(size.width / 2 + cutOutRadius, size.height),
+      Offset(size.width / 2 + cutOutRadius, 0),
       radius: const Radius.circular(cutOutRadius),
       clockwise: false,
     );
+    path.lineTo(size.width / 2 - cutOutRadius, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+    path.lineTo(0, 0);
 
-    path.lineTo(size.width - 20, size.height); // Bottom-right curve
-    path.quadraticBezierTo(
-        size.width, size.height, size.width, size.height - 20);
-    path.lineTo(size.width, 0); // Right side
     path.close();
 
     return path;
