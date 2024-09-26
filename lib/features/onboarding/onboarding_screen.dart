@@ -4,6 +4,7 @@ import 'package:pp_442/config/router/router.dart';
 import 'package:pp_442/core/extensions/theme_context_extension.dart';
 import 'package:pp_442/core/ui/custom_button.dart';
 import 'package:pp_442/core/ui/section.dart';
+import 'package:pp_442/features/onboarding/indicator.dart';
 import 'package:pp_442/gen/assets.gen.dart';
 
 @RoutePage()
@@ -31,22 +32,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(Assets.images.onboarding.a1.path),
-            Column(
-              children: [
-                Text(
-                  'Welcome !',
-                  style: context.text.displayLarge,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  'Organize your hobbies and creative projects',
-                  style: context.text.bodyLarge,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 80),
-              ],
+            Text(
+              'Welcome !',
+              style: context.text.displayLarge.copyWith(
+                color: context.colors.onPrimary,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'Organize your hobbies and creative projects',
+              style: context.text.displayMedium.copyWith(
+                color: context.colors.onPrimary,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 30),
+            Expanded(
+              child: Image.asset(Assets.images.onboarding.a1.path),
             ),
           ],
         ),
@@ -55,16 +57,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(Assets.images.onboarding.a2.path),
-            Column(
-              children: [
-                Text(
-                  'HobbyManager is your personal hobby manager',
-                  style: context.text.bodyLarge,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 80),
-              ],
+            Text(
+              'HobbyManager is your personal hobby manager',
+              style: context.text.displayMedium.copyWith(
+                color: context.colors.onPrimary,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 30),
+            Expanded(
+              child: Image.asset(Assets.images.onboarding.a2.path),
             ),
           ],
         ),
@@ -73,26 +75,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(Assets.images.onboarding.a3.path),
-            Column(
-              children: [
-                Text(
-                  'Start managing your hobbies today!',
-                  style: context.text.bodyLarge,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 80),
-              ],
+            Text(
+              'Start managing your hobbies today!',
+              style: context.text.displayMedium.copyWith(
+                color: context.colors.onPrimary,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 30),
+            Expanded(
+              child: Image.asset(Assets.images.onboarding.a3.path),
             ),
           ],
         ),
       ),
     ];
     return Scaffold(
+      backgroundColor: context.colors.primary,
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(height: 60),
+            const SizedBox(height: 20),
+            Indicator(
+              currPage: _currentPage,
+              totalPages: onboardingPages.length,
+            ),
+            const SizedBox(height: 50),
             Expanded(
               child: PageView(
                 physics: const NeverScrollableScrollPhysics(),
@@ -100,13 +108,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 children: onboardingPages,
               ),
             ),
+            const SizedBox(height: 80),
             Section(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 24),
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: CustomButton.title(
-                    title: 'Continue',
+                    title: _currentPage != onboardingPages.length - 1
+                        ? 'Next'
+                        : 'Start',
                     onPressed: () {
                       if (_currentPage != onboardingPages.length - 1) {
                         setState(() {
@@ -117,7 +128,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ++_currentPage;
                         });
                       } else {
-                        context.router.replace(HomeRoute());
+                        context.router.replace(const HomeRoute());
                       }
                     },
                     active: true,

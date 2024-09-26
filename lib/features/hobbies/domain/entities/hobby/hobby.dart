@@ -15,7 +15,7 @@ class Hobby with _$Hobby {
     @HiveField(2) required String name,
     @HiveField(3) required DateTime date,
     @HiveField(4) required DateTime time,
-    @HiveField(5) required List<Weekday>? reps,
+    @HiveField(5) required List<Weekday>? weekdays,
     @HiveField(6) required List<String>? stages,
   }) = _Hobby;
 }

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/completed_hobby_cubit.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/hobby_cubit.dart';
+import 'package:pp_442/features/hobbies/domain/state_management/hobby_time_cubit.dart';
 
 import 'core/services/database_service.dart';
 import 'main_app.dart';
@@ -39,13 +40,19 @@ Future<void> main() async {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => HobbyCubit(
-              box: databaseService.hobbies,
+            create: (context) => HobbyTimeCubit(
+              box: databaseService.hobbyTimes,
             ),
           ),
           BlocProvider(
             create: (context) => CompletedHobbyCubit(
               box: databaseService.completedHobbies,
+            ),
+          ),
+          BlocProvider(
+            create: (context) => HobbyCubit(
+              box: databaseService.hobbies,
+              completedHobbyCubit: context.read<CompletedHobbyCubit>(),
             ),
           ),
         ],

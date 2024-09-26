@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pp_442/features/hobbies/domain/entities/hobby/hobby.dart';
 import 'package:pp_442/features/hobbies/presentation/home_screen.dart';
-import 'package:pp_442/features/hobbies/presentation/new_hobby_first_screen.dart';
-import 'package:pp_442/features/hobbies/presentation/new_hobby_second_screen.dart';
+import 'package:pp_442/features/hobbies/presentation/new_hobby_screen.dart';
 import 'package:pp_442/features/hobbies/presentation/open_hobby_screen.dart';
-import 'package:pp_442/features/hobbies/presentation/see_all_hobbies_screen.dart';
+import 'package:pp_442/features/hobbies/presentation/history_screen.dart';
 import 'package:pp_442/features/hobbies/presentation/stats_screen.dart';
 import 'package:pp_442/features/hobbies/presentation/stopwatch_history_screen.dart';
 import 'package:pp_442/features/hobbies/presentation/stopwatch_screen.dart';
@@ -31,10 +31,9 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: OnboardingRoute.page),
         AutoRoute(page: HomeRoute.page),
         AutoRoute(page: SettingsRoute.page),
-        AutoRoute(page: NewHobbyFirstRoute.page),
-        AutoRoute(page: NewHobbySecondRoute.page),
+        AutoRoute(page: NewHobbyRoute.page),
         AutoRoute(page: OpenHobbyRoute.page),
-        AutoRoute(page: SeeAllHobbiesRoute.page),
+        AutoRoute(page: HistoryRoute.page),
         AutoRoute(page: StatsRoute.page),
         AutoRoute(page: StopwatchRoute.page),
         AutoRoute(page: StopwatchHistoryRoute.page),

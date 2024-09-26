@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pp_442/core/extensions/theme_context_extension.dart';
-import 'package:pp_442/core/ui/svg_icon.dart';
+import 'package:pp_442/core/ui/custom_icon.dart';
 
 class BottomNavbarItem extends StatelessWidget {
   final String title;
@@ -31,9 +31,9 @@ class BottomNavbarItem extends StatelessWidget {
         },
         child: Column(
           children: [
-            SvgIcon(
+            CustomIcon(
               assetName,
-              side: 25,
+              size: 25,
               color:
                   active ? context.colors.primary : context.colors.surfaceDim,
             ),

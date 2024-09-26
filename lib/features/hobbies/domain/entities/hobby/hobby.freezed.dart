@@ -27,7 +27,7 @@ mixin _$Hobby {
   @HiveField(4)
   DateTime get time => throw _privateConstructorUsedError;
   @HiveField(5)
-  List<Weekday>? get reps => throw _privateConstructorUsedError;
+  List<Weekday>? get weekdays => throw _privateConstructorUsedError;
   @HiveField(6)
   List<String>? get stages => throw _privateConstructorUsedError;
 
@@ -48,7 +48,7 @@ abstract class $HobbyCopyWith<$Res> {
       @HiveField(2) String name,
       @HiveField(3) DateTime date,
       @HiveField(4) DateTime time,
-      @HiveField(5) List<Weekday>? reps,
+      @HiveField(5) List<Weekday>? weekdays,
       @HiveField(6) List<String>? stages});
 }
 
@@ -72,7 +72,7 @@ class _$HobbyCopyWithImpl<$Res, $Val extends Hobby>
     Object? name = null,
     Object? date = null,
     Object? time = null,
-    Object? reps = freezed,
+    Object? weekdays = freezed,
     Object? stages = freezed,
   }) {
     return _then(_value.copyWith(
@@ -96,9 +96,9 @@ class _$HobbyCopyWithImpl<$Res, $Val extends Hobby>
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      reps: freezed == reps
-          ? _value.reps
-          : reps // ignore: cast_nullable_to_non_nullable
+      weekdays: freezed == weekdays
+          ? _value.weekdays
+          : weekdays // ignore: cast_nullable_to_non_nullable
               as List<Weekday>?,
       stages: freezed == stages
           ? _value.stages
@@ -121,7 +121,7 @@ abstract class _$$HobbyImplCopyWith<$Res> implements $HobbyCopyWith<$Res> {
       @HiveField(2) String name,
       @HiveField(3) DateTime date,
       @HiveField(4) DateTime time,
-      @HiveField(5) List<Weekday>? reps,
+      @HiveField(5) List<Weekday>? weekdays,
       @HiveField(6) List<String>? stages});
 }
 
@@ -143,7 +143,7 @@ class __$$HobbyImplCopyWithImpl<$Res>
     Object? name = null,
     Object? date = null,
     Object? time = null,
-    Object? reps = freezed,
+    Object? weekdays = freezed,
     Object? stages = freezed,
   }) {
     return _then(_$HobbyImpl(
@@ -167,9 +167,9 @@ class __$$HobbyImplCopyWithImpl<$Res>
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      reps: freezed == reps
-          ? _value._reps
-          : reps // ignore: cast_nullable_to_non_nullable
+      weekdays: freezed == weekdays
+          ? _value._weekdays
+          : weekdays // ignore: cast_nullable_to_non_nullable
               as List<Weekday>?,
       stages: freezed == stages
           ? _value._stages
@@ -188,9 +188,9 @@ class _$HobbyImpl implements _Hobby {
       @HiveField(2) required this.name,
       @HiveField(3) required this.date,
       @HiveField(4) required this.time,
-      @HiveField(5) required final List<Weekday>? reps,
+      @HiveField(5) required final List<Weekday>? weekdays,
       @HiveField(6) required final List<String>? stages})
-      : _reps = reps,
+      : _weekdays = weekdays,
         _stages = stages;
 
   @override
@@ -208,13 +208,13 @@ class _$HobbyImpl implements _Hobby {
   @override
   @HiveField(4)
   final DateTime time;
-  final List<Weekday>? _reps;
+  final List<Weekday>? _weekdays;
   @override
   @HiveField(5)
-  List<Weekday>? get reps {
-    final value = _reps;
+  List<Weekday>? get weekdays {
+    final value = _weekdays;
     if (value == null) return null;
-    if (_reps is EqualUnmodifiableListView) return _reps;
+    if (_weekdays is EqualUnmodifiableListView) return _weekdays;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -232,7 +232,7 @@ class _$HobbyImpl implements _Hobby {
 
   @override
   String toString() {
-    return 'Hobby(id: $id, category: $category, name: $name, date: $date, time: $time, reps: $reps, stages: $stages)';
+    return 'Hobby(id: $id, category: $category, name: $name, date: $date, time: $time, weekdays: $weekdays, stages: $stages)';
   }
 
   @override
@@ -246,7 +246,7 @@ class _$HobbyImpl implements _Hobby {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.time, time) || other.time == time) &&
-            const DeepCollectionEquality().equals(other._reps, _reps) &&
+            const DeepCollectionEquality().equals(other._weekdays, _weekdays) &&
             const DeepCollectionEquality().equals(other._stages, _stages));
   }
 
@@ -258,7 +258,7 @@ class _$HobbyImpl implements _Hobby {
       name,
       date,
       time,
-      const DeepCollectionEquality().hash(_reps),
+      const DeepCollectionEquality().hash(_weekdays),
       const DeepCollectionEquality().hash(_stages));
 
   /// Create a copy of Hobby
@@ -277,7 +277,7 @@ abstract class _Hobby implements Hobby {
       @HiveField(2) required final String name,
       @HiveField(3) required final DateTime date,
       @HiveField(4) required final DateTime time,
-      @HiveField(5) required final List<Weekday>? reps,
+      @HiveField(5) required final List<Weekday>? weekdays,
       @HiveField(6) required final List<String>? stages}) = _$HobbyImpl;
 
   @override
@@ -297,7 +297,7 @@ abstract class _Hobby implements Hobby {
   DateTime get time;
   @override
   @HiveField(5)
-  List<Weekday>? get reps;
+  List<Weekday>? get weekdays;
   @override
   @HiveField(6)
   List<String>? get stages;

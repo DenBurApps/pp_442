@@ -15,22 +15,27 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    HistoryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HistoryScreen(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const HomeScreen(),
       );
     },
-    NewHobbyFirstRoute.name: (routeData) {
+    NewHobbyRoute.name: (routeData) {
+      final args = routeData.argsAs<NewHobbyRouteArgs>(
+          orElse: () => const NewHobbyRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const NewHobbyFirstScreen(),
-      );
-    },
-    NewHobbySecondRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const NewHobbySecondScreen(),
+        child: NewHobbyScreen(
+          key: args.key,
+          hobby: args.hobby,
+        ),
       );
     },
     OnboardingRoute.name: (routeData) {
@@ -40,9 +45,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     OpenHobbyRoute.name: (routeData) {
+      final args = routeData.argsAs<OpenHobbyRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const OpenHobbyScreen(),
+        child: OpenHobbyScreen(
+          key: args.key,
+          hobby: args.hobby,
+          date: args.date,
+        ),
       );
     },
     PrivacyPolicyRoute.name: (routeData) {
@@ -59,12 +69,6 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           link: args.link,
         ),
-      );
-    },
-    SeeAllHobbiesRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SeeAllHobbiesScreen(),
       );
     },
     SettingsRoute.name: (routeData) {
@@ -107,6 +111,20 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
+/// [HistoryScreen]
+class HistoryRoute extends PageRouteInfo<void> {
+  const HistoryRoute({List<PageRouteInfo>? children})
+      : super(
+          HistoryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HistoryRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -121,31 +139,41 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [NewHobbyFirstScreen]
-class NewHobbyFirstRoute extends PageRouteInfo<void> {
-  const NewHobbyFirstRoute({List<PageRouteInfo>? children})
-      : super(
-          NewHobbyFirstRoute.name,
+/// [NewHobbyScreen]
+class NewHobbyRoute extends PageRouteInfo<NewHobbyRouteArgs> {
+  NewHobbyRoute({
+    Key? key,
+    Hobby? hobby,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NewHobbyRoute.name,
+          args: NewHobbyRouteArgs(
+            key: key,
+            hobby: hobby,
+          ),
           initialChildren: children,
         );
 
-  static const String name = 'NewHobbyFirstRoute';
+  static const String name = 'NewHobbyRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<NewHobbyRouteArgs> page =
+      PageInfo<NewHobbyRouteArgs>(name);
 }
 
-/// generated route for
-/// [NewHobbySecondScreen]
-class NewHobbySecondRoute extends PageRouteInfo<void> {
-  const NewHobbySecondRoute({List<PageRouteInfo>? children})
-      : super(
-          NewHobbySecondRoute.name,
-          initialChildren: children,
-        );
+class NewHobbyRouteArgs {
+  const NewHobbyRouteArgs({
+    this.key,
+    this.hobby,
+  });
 
-  static const String name = 'NewHobbySecondRoute';
+  final Key? key;
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  final Hobby? hobby;
+
+  @override
+  String toString() {
+    return 'NewHobbyRouteArgs{key: $key, hobby: $hobby}';
+  }
 }
 
 /// generated route for
@@ -164,16 +192,45 @@ class OnboardingRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [OpenHobbyScreen]
-class OpenHobbyRoute extends PageRouteInfo<void> {
-  const OpenHobbyRoute({List<PageRouteInfo>? children})
-      : super(
+class OpenHobbyRoute extends PageRouteInfo<OpenHobbyRouteArgs> {
+  OpenHobbyRoute({
+    Key? key,
+    required Hobby hobby,
+    DateTime? date,
+    List<PageRouteInfo>? children,
+  }) : super(
           OpenHobbyRoute.name,
+          args: OpenHobbyRouteArgs(
+            key: key,
+            hobby: hobby,
+            date: date,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'OpenHobbyRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<OpenHobbyRouteArgs> page =
+      PageInfo<OpenHobbyRouteArgs>(name);
+}
+
+class OpenHobbyRouteArgs {
+  const OpenHobbyRouteArgs({
+    this.key,
+    required this.hobby,
+    this.date,
+  });
+
+  final Key? key;
+
+  final Hobby hobby;
+
+  final DateTime? date;
+
+  @override
+  String toString() {
+    return 'OpenHobbyRouteArgs{key: $key, hobby: $hobby, date: $date}';
+  }
 }
 
 /// generated route for
@@ -226,20 +283,6 @@ class PrivacyRouteArgs {
   String toString() {
     return 'PrivacyRouteArgs{key: $key, link: $link}';
   }
-}
-
-/// generated route for
-/// [SeeAllHobbiesScreen]
-class SeeAllHobbiesRoute extends PageRouteInfo<void> {
-  const SeeAllHobbiesRoute({List<PageRouteInfo>? children})
-      : super(
-          SeeAllHobbiesRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'SeeAllHobbiesRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

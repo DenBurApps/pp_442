@@ -12,39 +12,27 @@ class TermsOfUseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         leading: const CustomBackButton(),
-        titleSpacing: 0,
         title: Text(
           'Terms of Use',
-          style: context.text.displayMedium,
+          style: context.text.displayLarge,
         ),
-        centerTitle: false,
+        centerTitle: true,
       ),
       body: SafeArea(
         bottom: false,
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: Container(
-                margin: const EdgeInsets.symmetric(
-                  vertical: 16,
-                  horizontal: 12,
-                ),
-                decoration: BoxDecoration(
-                  color: context.colors.surface,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Theme(
-                  data: ThemeData(brightness: Brightness.light),
-                  child: const Markdown(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-                    data: TextHelper.terms,
-                  ),
+              child: Theme(
+                data: ThemeData(brightness: Brightness.light),
+                child: const Markdown(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+                  data: TextHelper.terms,
                 ),
               ),
             ),

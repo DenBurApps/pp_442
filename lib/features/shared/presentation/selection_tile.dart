@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pp_442/core/extensions/theme_context_extension.dart';
-import 'package:pp_442/core/ui/svg_icon.dart';
+import 'package:pp_442/core/ui/custom_icon.dart';
 
 class SelectionTile extends StatelessWidget {
   const SelectionTile({
@@ -43,7 +43,7 @@ class SelectionTile extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             minSize: 0,
             onPressed: onPressed,
-            child: SvgIcon(
+            child: CustomIcon(
               iconAssetName,
               color: iconColor ?? context.colors.primary,
             ),

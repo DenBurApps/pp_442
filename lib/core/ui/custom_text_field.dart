@@ -78,28 +78,35 @@ class CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = context.text.bodyLarge;
+    final textStyle = context.text.displaySmall.copyWith(
+      color: context.colors.primary,
+    );
     return Stack(
       children: [
-        CupertinoTextField(
-          padding: const EdgeInsets.all(16),
-          minLines: widget.multiline ? 6 : 1,
-          maxLines: widget.multiline || widget.expands != null ? null : 1,
-          cursorColor: context.colors.primary,
-          cursorHeight: 22,
-          style: textStyle,
-          controller: _controller,
+        Container(
           decoration: BoxDecoration(
-            color: widget.color ?? context.colors.surface,
-            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: context.colors.primary),
+            borderRadius: BorderRadius.circular(20),
           ),
-          onChanged: (value) {
-            setState(() {});
-            widget.onChanged(value);
-          },
-          focusNode: _focusNode,
-          keyboardType: widget.keyboardType,
-          inputFormatters: widget.inputFormatters,
+          child: CupertinoTextField(
+            padding: const EdgeInsets.all(20),
+            minLines: widget.multiline ? 6 : 1,
+            maxLines: widget.multiline || widget.expands != null ? null : 1,
+            cursorColor: context.colors.primary,
+            cursorHeight: 22,
+            style: textStyle,
+            controller: _controller,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            onChanged: (value) {
+              setState(() {});
+              widget.onChanged(value);
+            },
+            focusNode: _focusNode,
+            keyboardType: widget.keyboardType,
+            inputFormatters: widget.inputFormatters,
+          ),
         ),
         AnimatedSwitcher(
           duration: Durations.short2,
@@ -113,11 +120,11 @@ class CustomTextFieldState extends State<CustomTextField> {
                     _focusNode.requestFocus();
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(20),
                     child: Text(
                       widget.placeholder,
                       style: textStyle.copyWith(
-                        color: context.colors.surfaceDim,
+                        color: context.colors.onSurfaceVariant.withOpacity(.5),
                       ),
                     ),
                   ),

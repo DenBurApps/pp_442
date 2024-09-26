@@ -21,43 +21,67 @@ class $AssetsIconsGen {
   /// File path: assets/icons/checkmark.svg
   String get checkmark => 'assets/icons/checkmark.svg';
 
+  /// File path: assets/icons/checkmark_active.svg
+  String get checkmarkActive => 'assets/icons/checkmark_active.svg';
+
+  /// File path: assets/icons/cup.png
+  AssetGenImage get cup => const AssetGenImage('assets/icons/cup.png');
+
   /// File path: assets/icons/delete.svg
   String get delete => 'assets/icons/delete.svg';
+
+  /// File path: assets/icons/delete_primary.svg
+  String get deletePrimary => 'assets/icons/delete_primary.svg';
 
   /// File path: assets/icons/done.svg
   String get done => 'assets/icons/done.svg';
 
+  /// File path: assets/icons/done_primary.svg
+  String get donePrimary => 'assets/icons/done_primary.svg';
+
+  /// File path: assets/icons/dropdown.svg
+  String get dropdown => 'assets/icons/dropdown.svg';
+
+  /// File path: assets/icons/edit.svg
+  String get edit => 'assets/icons/edit.svg';
+
   /// File path: assets/icons/forward.svg
   String get forward => 'assets/icons/forward.svg';
 
-  /// File path: assets/icons/list.svg
-  String get list => 'assets/icons/list.svg';
+  /// File path: assets/icons/list.png
+  AssetGenImage get list => const AssetGenImage('assets/icons/list.png');
+
+  /// File path: assets/icons/note.svg
+  String get note => 'assets/icons/note.svg';
 
   /// File path: assets/icons/settings.svg
   String get settings => 'assets/icons/settings.svg';
 
-  /// File path: assets/icons/stats.svg
-  String get stats => 'assets/icons/stats.svg';
+  /// File path: assets/icons/stats.png
+  AssetGenImage get stats => const AssetGenImage('assets/icons/stats.png');
 
-  /// File path: assets/icons/stopwatch.svg
-  String get stopwatch => 'assets/icons/stopwatch.svg';
-
-  /// File path: assets/icons/winner_cup.svg
-  String get winnerCup => 'assets/icons/winner_cup.svg';
+  /// File path: assets/icons/sw.svg
+  String get sw => 'assets/icons/sw.svg';
 
   /// List of all assets
-  List<String> get values => [
+  List<dynamic> get values => [
         back,
         backward,
         checkmark,
+        checkmarkActive,
+        cup,
         delete,
+        deletePrimary,
         done,
+        donePrimary,
+        dropdown,
+        edit,
         forward,
         list,
+        note,
         settings,
         stats,
-        stopwatch,
-        winnerCup
+        sw
       ];
 }
 
@@ -171,12 +195,16 @@ class $AssetsImagesPlaceholdersGen {
   AssetGenImage get history =>
       const AssetGenImage('assets/images/placeholders/history.png');
 
+  /// File path: assets/images/placeholders/main.png
+  AssetGenImage get main =>
+      const AssetGenImage('assets/images/placeholders/main.png');
+
   /// File path: assets/images/placeholders/stats.png
   AssetGenImage get stats =>
       const AssetGenImage('assets/images/placeholders/stats.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [history, stats];
+  List<AssetGenImage> get values => [history, main, stats];
 }
 
 class Assets {

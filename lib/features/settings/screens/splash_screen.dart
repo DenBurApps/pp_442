@@ -82,7 +82,7 @@ class _SplashScreenState extends State<SplashScreen> {
           if (isFirstRun) {
             router.replace(const OnboardingRoute());
           } else {
-            router.replace(HomeRoute());
+            router.replace(const HomeRoute());
           }
         } else {
           router.replace(PrivacyRoute(link: link));

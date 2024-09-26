@@ -16,12 +16,11 @@ class PrivacyPolicyScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         leading: const CustomBackButton(),
-        titleSpacing: 0,
         title: Text(
           'Privacy Policy',
-          style: context.text.displayMedium,
+          style: context.text.displayLarge,
         ),
-        centerTitle: false,
+        centerTitle: true,
       ),
       body: SafeArea(
         bottom: false,
