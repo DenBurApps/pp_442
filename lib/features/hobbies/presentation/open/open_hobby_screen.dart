@@ -16,7 +16,7 @@ import 'package:pp_442/features/hobbies/domain/entities/hobby/hobby.dart';
 import 'package:pp_442/features/hobbies/domain/entities/hobby_category/hobby_category.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/completed_hobby_cubit.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/hobby_cubit.dart';
-import 'package:pp_442/features/hobbies/presentation/stage_widget.dart';
+import 'package:pp_442/features/hobbies/presentation/common/stage_widget.dart';
 import 'package:pp_442/gen/assets.gen.dart';
 import 'package:uuid/v4.dart';
 

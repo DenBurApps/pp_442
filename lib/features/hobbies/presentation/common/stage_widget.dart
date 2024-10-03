@@ -25,10 +25,6 @@ class _StageWidgetState extends State<StageWidget> {
   void initState() {
     super.initState();
     _stageController.text = widget.stage;
-
-    _stageController.addListener(() {
-      widget.onChanged(_stageController.text);
-    });
   }
 
   @override

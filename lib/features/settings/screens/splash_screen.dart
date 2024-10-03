@@ -20,14 +20,10 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  // late ConfigService _configService;
-  // TODO uncomment while building
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      // _configService = context.read<ConfigService>();
-      // TODO uncomment while building
       await _checkConnectivity(
         () async => await DialogManager.showNoInternetDialog(context),
       );
@@ -65,14 +61,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _navigate() async {
     final router = context.router;
-    // final usePrivacy = _configService.usePrivacy;
-    // final link = _configService.link;
-    // TODO uncomment while building
-
+    // final configService = context.read<ConfigService>();
+    // final usePrivacy = configService.usePrivacy;
+    // final link = configService.link;
+    // TODO uncomment upon building
     late bool usePrivacy = true;
     const link = 'https://yandex.ru';
-    // TODO remove while building
-
+    // TODO delete upon building
     await IsFirstRun.isFirstRun().then(
       (isFirstRun) async {
         if (isFirstRun) {

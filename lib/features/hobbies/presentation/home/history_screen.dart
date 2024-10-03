@@ -13,7 +13,7 @@ import 'package:pp_442/features/hobbies/domain/entities/completed_hobby/complete
 import 'package:pp_442/features/hobbies/domain/entities/hobby/hobby.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/completed_hobby_cubit.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/hobby_cubit.dart';
-import 'package:pp_442/features/hobbies/presentation/hobby_square_card.dart';
+import 'package:pp_442/features/hobbies/presentation/common/hobby_square_card.dart';
 import 'package:pp_442/features/settings/dialogs/dialog_manager.dart';
 import 'package:pp_442/gen/assets.gen.dart';
 

@@ -12,8 +12,8 @@ import 'package:pp_442/core/ui/section.dart';
 import 'package:pp_442/features/hobbies/domain/entities/hobby_category/hobby_category.dart';
 import 'package:pp_442/features/hobbies/domain/entities/hobby_time/hobby_time.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/hobby_time_cubit.dart';
-import 'package:pp_442/features/hobbies/presentation/custom_tick_indicator.dart';
-import 'package:pp_442/features/hobbies/presentation/hobby_category_card.dart';
+import 'package:pp_442/features/hobbies/presentation/stopwatch/widgets/custom_tick_indicator.dart';
+import 'package:pp_442/features/hobbies/presentation/common/hobby_category_card.dart';
 import 'package:pp_442/gen/assets.gen.dart';
 import 'package:uuid/v4.dart';
 

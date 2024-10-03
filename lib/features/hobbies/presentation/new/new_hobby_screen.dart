@@ -15,8 +15,8 @@ import 'package:pp_442/features/hobbies/domain/entities/hobby/hobby.dart';
 import 'package:pp_442/features/hobbies/domain/entities/hobby_category/hobby_category.dart';
 import 'package:pp_442/features/hobbies/domain/entities/weekday/weekday.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/hobby_cubit.dart';
-import 'package:pp_442/features/hobbies/presentation/hobby_category_card.dart';
-import 'package:pp_442/features/hobbies/presentation/stage_widget.dart';
+import 'package:pp_442/features/hobbies/presentation/common/hobby_category_card.dart';
+import 'package:pp_442/features/hobbies/presentation/common/stage_widget.dart';
 import 'package:pp_442/features/onboarding/indicator.dart';
 import 'package:pp_442/features/settings/dialogs/dialog_manager.dart';
 import 'package:pp_442/gen/assets.gen.dart';
@@ -320,7 +320,8 @@ class _NewHobbyScreenState extends State<NewHobbyScreen> {
                           return StageWidget(
                             stageLetter: 'ABC'[index],
                             stage: _stages![index],
-                            onChanged: (val) => _stages![index] = val,
+                            onChanged: (val) =>
+                                setState(() => _stages![index] = val),
                           );
                         },
                         separatorBuilder: (context, index) =>
@@ -363,7 +364,11 @@ class _NewHobbyScreenState extends State<NewHobbyScreen> {
                     }
                     context.router.popForced();
                   },
-                  active: _nameController.text.isNotEmpty,
+                  active: _nameController.text.isNotEmpty &&
+                      (_weekdays != null ? _weekdays!.isNotEmpty : true) &&
+                      (_stages != null
+                          ? _stages!.every((s) => s.isNotEmpty)
+                          : true),
                   color: context.colors.primary,
                   textColor: context.colors.onPrimary,
                 ),

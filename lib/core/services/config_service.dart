@@ -1,35 +1,41 @@
-import 'dart:developer';
-import 'package:configcat_client/configcat_client.dart';
+import 'dart:convert';
+
+import 'package:flagsmith/flagsmith.dart';
 
 class ConfigService {
-  static const _sdkKey =
-      'configcat-sdk-1/s9vcCJ05R0GJhGJQLsUyeQ/zsUvybhLSEy0Lft5efj0tg';
+  static const _apikey = '';
+  // TODO insert flagsmith key here
 
-  late final ConfigCatClient _client;
+  late FlagsmithClient _flagsmithClient;
 
-  late final bool _usePrivacy;
-
-  late final String _link;
+  late String _link;
+  late bool _usePrivacy;
 
   Future<ConfigService> init() async {
-    _client = ConfigCatClient.get(sdkKey: _sdkKey);
+    _flagsmithClient = await FlagsmithClient.init(
+      apiKey: _apikey,
+      config: const FlagsmithConfig(caches: true),
+    );
+    await _flagsmithClient.getFeatureFlags(reload: true);
 
-    _usePrivacy = await _client.getValue<bool>(
-        key: ConfigKey.useprivacy.name, defaultValue: true);
-    _link = await _client.getValue<String>(
-        key: ConfigKey.link.name, defaultValue: '');
-    log('$_usePrivacy, $_link');
+    final config = jsonDecode(
+        await _flagsmithClient.getFeatureFlagValue(ConfigKey.config.name) ??
+            '') as Map<String, dynamic>;
+
+    _link = config[ConfigKey.link.name];
+    _usePrivacy = config[ConfigKey.usePrivacy.name];
     return this;
   }
+
+  void closeClient() => _flagsmithClient.close();
 
   bool get usePrivacy => _usePrivacy;
 
   String get link => _link;
-
-  void closeClient() => _client.close();
 }
 
 enum ConfigKey {
+  config,
   link,
-  useprivacy,
+  usePrivacy,
 }

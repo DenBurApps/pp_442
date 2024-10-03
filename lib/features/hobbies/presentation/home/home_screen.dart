@@ -14,7 +14,8 @@ import 'package:pp_442/features/hobbies/domain/entities/hobby/hobby.dart';
 import 'package:pp_442/features/hobbies/domain/entities/hobby_category/hobby_category.dart';
 import 'package:pp_442/features/hobbies/domain/entities/weekday/weekday.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/hobby_cubit.dart';
-import 'package:pp_442/features/hobbies/presentation/hobby_square_card.dart';
+import 'package:pp_442/features/hobbies/presentation/common/hobby_square_card.dart';
+import 'package:pp_442/features/hobbies/presentation/common/stopwatch_button.dart';
 import 'package:pp_442/gen/assets.gen.dart';
 
 @RoutePage()
@@ -63,29 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         color: context.colors.onPrimary,
                                       ),
                                     ),
-                                    CupertinoButton(
-                                      color: context.colors.onPrimary,
-                                      borderRadius: BorderRadius.circular(30),
-                                      padding: const EdgeInsets.all(10),
-                                      onPressed: () => context.router
-                                          .push(const StopwatchRoute()),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            CupertinoIcons.stopwatch,
-                                            color: context.colors.primary,
-                                          ),
-                                          const SizedBox(width: 10),
-                                          Text(
-                                            'Stopwatch',
-                                            style: context.text.labelLarge
-                                                .copyWith(
-                                              color: context.colors.primary,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
+                                    const StopwatchButton(),
                                   ],
                                 ),
                                 const SizedBox(width: 10),

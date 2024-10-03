@@ -16,16 +16,12 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
-  // TODO uncomment while building
+
   // final configService = await ConfigService().init();
-  // WidgetsBinding.instance.addObserver(
-  //   AppLifecycleListener(
-  //     onDetach: () {
-  //       configService.closeClient();
-  //       log('Закрытие приложения');
-  //     },
-  //   ),
-  // );
+  // WidgetsBinding.instance.addObserver(AppLifecycleListener(
+  //   onDetach: configService.closeClient,
+  // ));
+  // TODO uncomment upon building
 
   final databaseService = DatabaseService();
   await databaseService.init();
@@ -34,8 +30,8 @@ Future<void> main() async {
     MultiRepositoryProvider(
       providers: [
         RepositoryProvider(create: (context) => databaseService),
-        // TODO uncomment while building
         // RepositoryProvider(create: (context) => configService),
+        // TODO uncomment upon building
       ],
       child: MultiBlocProvider(
         providers: [
