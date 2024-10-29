@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flagsmith/flagsmith.dart';
 
 class ConfigService {
-  static const _apikey = '';
+  static const _apikey = 'hPmZk2nPHLPhVDEtKosofn';
   // TODO insert flagsmith key here
 
   late FlagsmithClient _flagsmithClient;

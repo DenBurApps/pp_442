@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:pp_442/core/services/config_service.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/completed_hobby_cubit.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/hobby_cubit.dart';
 import 'package:pp_442/features/hobbies/domain/state_management/hobby_time_cubit.dart';
@@ -17,11 +18,10 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  // final configService = await ConfigService().init();
-  // WidgetsBinding.instance.addObserver(AppLifecycleListener(
-  //   onDetach: configService.closeClient,
-  // ));
-  // TODO uncomment upon building
+  final configService = await ConfigService().init();
+  WidgetsBinding.instance.addObserver(AppLifecycleListener(
+    onDetach: configService.closeClient,
+  ));
 
   final databaseService = DatabaseService();
   await databaseService.init();
@@ -30,8 +30,7 @@ Future<void> main() async {
     MultiRepositoryProvider(
       providers: [
         RepositoryProvider(create: (context) => databaseService),
-        // RepositoryProvider(create: (context) => configService),
-        // TODO uncomment upon building
+        RepositoryProvider(create: (context) => configService),
       ],
       child: MultiBlocProvider(
         providers: [

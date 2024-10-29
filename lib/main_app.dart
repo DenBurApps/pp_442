@@ -10,7 +10,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'ShopSaver: My List',
+      title: 'Creative Compass: Pro',
       theme: AppTheme.theme,
       routerConfig: _router.config(),
       debugShowCheckedModeBanner: false,
